@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <title>Adhar Validation</title>
+    <script type="text/javascript">
+        function AdharValid(str) {
+            let flag = true;
+            let span = document.getElementById("s");
+            if (str.length != 12) {
+                flag = false;
+            } else {
+                for (var i = 0; i < str.length; i++) {
+                    if (!(str.charCodeAt(i) >= 48 && str.charCodeAt(i) <= 57)) {
+                        flag = false;
+                    }
+                }
+            }
+            if (flag) {
+                span.innerHTML = "Valid Adhar Number";
+                span.style.color = "green";
+                span.style.padding = "20px";
+            } else {
+                span.innerHTML = "Invalid Adhar Number";
+                span.style.color = "red";
+                span.style.padding = "20px";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" name="name" value="" style="width: 400px; height: 40px;" onkeyup="AdharValid(this.value)" />
+    <span id="s"></span>
+</body>
+
+</html>
