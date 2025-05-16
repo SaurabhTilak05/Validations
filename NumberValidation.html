@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <title>Number Validation</title>
+    <script type="text/javascript">
+        function ValidationNumber(no) {
+            let flag = true;
+            let count = 1;
+            let span = document.getElementById("s");
+            for (var i = 0; i < no.length; i++) {
+                count++;
+                if (!(no.charCodeAt(i) >= 48 && no.charCodeAt(i) <= 57)) {
+                    flag = false;
+                }
+            }
+            if (flag && count <= 11) {
+                span.innerHTML = "";
+                span.style.color = "white";
+                span.styel.padding = '20px';
+
+            } else {
+                span.innerHTML = "Invalid Number";
+                span.style.color = "red";
+                span.style.padding = "20px";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" name="name" value="" style="width: 400px; height: 40px;" onkeyup="ValidationNumber(this.value)" />
+    <span id="s"></span>
+</body>
+
+</html>
