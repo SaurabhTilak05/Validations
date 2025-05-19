@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>Voter Validation</title>
+    <script type="text/javascript">
+        function VoterValid(str) {
+
+            let flag = true;
+            let span = document.getElementById("s");
+            if (str.length != 10) {
+                flag = false;
+            } else {
+                for (let i = 0; i < str.length; i++) {
+                    let st = str.charAt(0);
+                    if (!(st != (str.charCodeAt(i) >= 65 && str.charCodeAt(i) <= 90))) {
+                        flag = false
+                    }
+                }
+                for (let i = 0; i < str.length - 1; i++) {
+                    if (!((str.charCodeAt(i + 1) >= 65 && str.charCodeAt(i + 1) <= 90) || (str.charCodeAt(i + 1) >= 48 && str.charCodeAt(i + 1) <= 57))) {
+                        flag = false
+                    }
+                }
+                let last = str.charAt(str.length - 1);
+                if (!(last.charCodeAt(0) >= 48 && last.charCodeAt(0) <= 57)) {
+                    flag = false;
+                }
+            }
+
+            if (flag) {
+                span.innerHTML = "Valid Voter ID";
+                span.style.color = "green";
+                span.style.padding = "20px";
+            } else {
+                span.innerHTML = "Invalid Voter ID";
+                span.style.color = "red";
+                span.style.padding = "20px";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" name="name" value="" style="width: 400px; height: 40px;" onkeyup="VoterValid(this.value)" />
+    <span id="s"></span>
+</body>
+
+</html>
