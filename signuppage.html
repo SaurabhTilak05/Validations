@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to right, rgb(116, 82, 14), rgb(231, 215, 95), rgb(242, 213, 50), rgb(140, 98, 13));
+            overflow: hidden auto;
+        }
+        
+        .cointener {
+            height: 570px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            /* background: linear-gradient(to right, rgb(10, 6, 32), rgb(1, 3, 7), rgb(5, 9, 28), rgb(9, 5, 21));
+       */
+        }
+        
+        form {
+            height: 550px;
+            width: 450px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            border-radius: 5%;
+            box-shadow: 0px 0px 30px rgb(16, 3, 3);
+        }
+        
+        input {
+            height: 5px;
+            width: 300px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(190, 220, 242);
+            padding: 20px;
+        }
+        
+        #bt {
+            height: 30px;
+            width: 50px;
+            border-radius: 10px;
+            border: none;
+            /* background: linear-gradient(to right, red, orange, yellow);
+     */
+        }
+        
+        img {
+            height: 40px;
+            width: 40px;
+            background-size: cover;
+        }
+        
+        #button {
+            height: 35px;
+            width: 150px;
+            border-radius: 10px;
+            border: none;
+            background: linear-gradient(to right, red, orange, yellow);
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="cointener">
+        <form action="save.html">
+
+            <h1>Login Here <img src="theam2.png" alt="Theme" onclick="changetheam()"></h1>
+            <input type="text" name="name" id="name" value="" placeholder="Enter Your Name" onkeyup="validName(this.value)" /><span id="s"></span><br>
+            <input type="email" name="email" id="email" value="" placeholder="Enter Your Email" onkeyup="validEmail(this.value)" /> <span id="e"></span><br>
+            <input type="text" name="contact" id="contact" value="" placeholder="Enter Your Contact" onkeyup="validContact(this.value)" /><span id="c"></span><br>
+            <input type="password" name="pas1" id="pass1" value="" placeholder="Create new Password" onkeyup="validPass()" /><br>
+            <input type="password" name="pas2" id="pass2" value="" placeholder="Conform your Passtord" onkeyup="validPass()" /><span id="d"></span><br>
+            <button type="submit" id="button">sign up</button>
+        </form>
+    </div>
+
+
+    <script type="text/javascript">
+        let isDark = true;
+
+        function changetheam() {
+            const form = document.querySelector("form");
+            const body = document.body;
+
+            if (isDark) {
+
+                body.style.background = "linear-gradient(to right, rgb(116, 82, 14), rgb(231, 215, 95), rgb(242, 213, 50), rgb(140, 98, 13))";
+                form.style.background = "linear-gradient(to top, rgb(168, 131, 9), rgb(143, 231, 28), rgb(231, 231, 28), rgb(241, 226, 178), rgb(169, 147, 113), rgb(208, 88, 44))";
+                form.style.boxShadow = "0px 0px 30px #888";
+            } else {
+
+                body.style.background = "linear-gradient(to right, rgb(26, 8, 126), rgb(11, 21, 50), rgb(5, 9, 28), rgb(39, 8, 141))";
+                form.style.background = "linear-gradient(to top, rgb(9, 12, 168), rgb(82, 28, 231), rgb(28, 187, 231), rgb(178, 211, 241), rgb(113, 169, 166), rgb(110, 121, 120))";
+                form.style.boxShadow = "0px 0px 30px rgb(16, 3, 3)";
+            }
+
+            isDark = !isDark;
+        }
+
+
+        function validName(str) {
+            let flag = true;
+            str = str.toLowerCase();
+            let span = document.getElementById("s");
+            for (var i = 0; i < str.length; i++) {
+                if (!((str.charCodeAt(i) >= 97 && str.charCodeAt(i) <= 122) || str.charCodeAt(i) == 32)) {
+                    flag = false;
+                }
+            }
+            if (flag) {
+                span.innerHTML = "Valid Name";
+                span.style.color = "green";
+
+            } else {
+                span.innerHTML = "Invalid Name";
+                span.style.color = "red";
+
+            }
+        }
+
+        //   Email validaion
+        function validEmail(str) {
+            let index = str.indexOf("@"); // saur@sa@
+            let index1 = str.lastIndexOf("@");
+            let span = document.getElementById("e");
+
+            if (index <= 0 || index != index1) {
+                span.innerHTML = "Invalid email";
+                span.style.color = "red";
+            } else {
+                let as = str.substring((index + 1));
+                index = as.indexOf(".");
+                index1 = as.lastIndexOf(".");
+                if ((index == -1 || index != index1) || (index != (as.length - 4) && index != (as.length - 3))) {
+                    span.innerHTML = "Invalid email";
+                    span.style.color = "red";
+                } else {
+                    span.innerHTML = "valid email ";
+                    span.style.color = "green";
+                }
+            }
+        }
+
+        function validContact(str) {
+            let flag = true;
+            let count = 1;
+            let span = document.getElementById("c");
+            for (var i = 0; i < str.length; i++) {
+                count++;
+                if (!(str.charCodeAt(i) >= 48 && str.charCodeAt(i) <= 57)) {
+                    flag = false;
+                }
+            }
+            if (flag && (count > 6 && count <= 11)) {
+                span.innerHTML = "Valid Contact";
+                span.style.color = "green";
+
+
+            } else {
+                span.innerHTML = "Invalid Number";
+                span.style.color = "red";
+
+            }
+        }
+
+        function validPass() {
+            let pas1 = document.getElementById("pass1").value;
+            let pas2 = document.getElementById("pass2").value;
+            let span = document.getElementById("d");
+            if (pas1 === pas2) {
+                span.innerHTML = "Password match";
+                span.style.color = "green";
+
+            } else {
+                span.innerHTML = "Password do not match";
+                span.style.color = "red";
+
+            }
+        }
+    </script>
+</body>
+
+</html>
