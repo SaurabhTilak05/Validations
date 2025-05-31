@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Submitted Data</title>
+    <style>
+        body {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden auto;
+            background: linear-gradient(rgb(12, 12, 34));
+        }
+        
+        .submit {
+            height: 450px;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            color: aliceblue;
+            border-radius: 10%;
+            padding-left: 50px;
+            background: linear-gradient(to top, rgb(77, 80, 244), rgb(82, 28, 231), rgb(28, 187, 231), rgb(178, 211, 241), rgb(113, 169, 166), rgb(110, 121, 120));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="submit">
+        <h1>User Submitted Data</h1>
+        <p id="name"></p>
+        <p id="email"></p>
+        <p id="contact"></p>
+        <p id="password1"></p>
+        <p id="password2"></p>
+    </div>
+    <script>
+        // Parse query string parameters
+        const params = new URLSearchParams(window.location.search);
+
+        // Get values
+        const name = params.get("name");
+        const email = params.get("email");
+        const contact = params.get("contact");
+        const pass1 = params.get("pas1");
+        const pass2 = params.get("pas2");
+
+        // Display them in the HTML
+        document.getElementById("name").textContent = "Name: " + name;
+        document.getElementById("email").textContent = "Email: " + email;
+        document.getElementById("contact").textContent = "Contact: " + contact;
+        document.getElementById("password1").textContent = "Password: " + pass1;
+        document.getElementById("password2").textContent = "Confirm Password: " + pass2;
+    </script>
+</body>
+
+</html>
